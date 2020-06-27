@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkSaver2", "VkSaver2.csproj", "{0EEED85C-236F-4962-8C4C-59B6C3AAE86A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EEED85C-236F-4962-8C4C-59B6C3AAE86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EEED85C-236F-4962-8C4C-59B6C3AAE86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EEED85C-236F-4962-8C4C-59B6C3AAE86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EEED85C-236F-4962-8C4C-59B6C3AAE86A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A58903A-14DB-46B4-9BE7-1432F156314F}
+	EndGlobalSection
+EndGlobal
