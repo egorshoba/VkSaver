@@ -21,17 +21,25 @@ namespace VkSaver2
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             var encoding = Encoding.GetEncoding("windows-1251");
+            Console.OutputEncoding = Encoding.Unicode;
             var fileNumber = 0;
             foreach (var folder in Directory.GetDirectories("/Projects/VkSaver2/Archive/messages"))
             {
 
-                foreach (var file in Directory.GetFiles(folder))
+                foreach (var file in Directory.GetFiles(folder).Where(file => file.EndsWith(".html")))
                 {
                     fileNumber++;
-                    Console.WriteLine(fileNumber);
-
                     var fullHtml = File.ReadAllText(file, encoding);
                     htmlDoc.LoadHtml(fullHtml);
+
+                    var nameNode = htmlDoc.DocumentNode.Descendants(0)
+                        .Where(n => n.HasClass("ui_crumb") && n.Name == "div");
+
+                    string name = "";
+                    if (nameNode.Any())
+                        name = nameNode.FirstOrDefault().InnerText;
+                    
+                    Console.WriteLine(fileNumber + ": " + name);
 
                     var nodes = htmlDoc.DocumentNode.Descendants(0)
                         .Where(n => n.HasClass("attachment__link"));
@@ -46,8 +54,11 @@ namespace VkSaver2
                         {
                             var imageName = Guid.NewGuid().ToString() + ".jpg";
 
-                            helpers.Download(webClient, link, folder + "/" + imageName);
+                            var downloaded = helpers.Download(webClient, link, folder + "/" + imageName);
 
+                            if (!downloaded)
+                                continue;
+                            
                             var imgHtml = @"<img src=""" + imageName + @""">";
 
                             var imgNode = HtmlNode.CreateNode(imgHtml);
@@ -76,7 +87,7 @@ namespace VkSaver2
 
         public class Helpers
         {
-            public void Download(WebClient webClient, string link, string path)
+            public bool Download(WebClient webClient, string link, string path)
             {
                 int sleep = 0;
 
@@ -86,10 +97,14 @@ namespace VkSaver2
                     {
                         webClient.DownloadFile(link, path);
                         Thread.Sleep(sleep);
-                        return;
+                        return true;
                     }
                     catch (Exception ex)
                     {
+                        if (ex.Message.Contains("(404) Not Found"))
+                        {
+                            return false;
+                        }
                         Console.WriteLine("download error " + link + ex.Message);
                         sleep += 1000;
                     }
