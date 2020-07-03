@@ -38,7 +38,7 @@ namespace VkSaver2
                     string name = "";
                     if (nameNode.Any())
                         name = nameNode.FirstOrDefault().InnerText;
-                    
+
                     Console.WriteLine(fileNumber + ": " + name);
 
                     var nodes = htmlDoc.DocumentNode.Descendants(0)
@@ -58,7 +58,7 @@ namespace VkSaver2
 
                             if (!downloaded)
                                 continue;
-                            
+
                             var imgHtml = @"<img src=""" + imageName + @""">";
 
                             var imgNode = HtmlNode.CreateNode(imgHtml);
@@ -91,24 +91,17 @@ namespace VkSaver2
             {
                 int sleep = 0;
 
-                while (true)
+                try
                 {
-                    try
-                    {
-                        webClient.DownloadFile(link, path);
-                        Thread.Sleep(sleep);
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message.Contains("(404) Not Found"))
-                        {
-                            return false;
-                        }
-                        Console.WriteLine("download error " + link + ex.Message);
-                        sleep += 1000;
-                    }
+                    webClient.DownloadFile(new Uri(link), path);
+                    Thread.Sleep(sleep);
+                    return true;
                 }
+                catch
+                {
+                    return false;
+                }
+
             }
         }
 

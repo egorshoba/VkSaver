@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkApp", "VkApp\VkApp.csproj", "{DE609DE8-AC9C-421D-94A8-191C190A11AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE609DE8-AC9C-421D-94A8-191C190A11AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE609DE8-AC9C-421D-94A8-191C190A11AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE609DE8-AC9C-421D-94A8-191C190A11AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE609DE8-AC9C-421D-94A8-191C190A11AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EABDA17A-D4BA-4DA9-B49A-BBF0ED41B271}
+	EndGlobalSection
+EndGlobal
